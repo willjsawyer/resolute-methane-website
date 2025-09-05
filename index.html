@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resolute Methane</title>
+  <meta name="description" content="Resolute Methane — We’re building. We’ll be with you shortly." />
+  <meta property="og:title" content="Resolute Methane" />
+  <meta property="og:description" content="We’re building. We’ll be with you shortly." />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+
+  <style>
+    :root{
+      --text:#0a0a0a;
+      --muted:#5b5b5b;
+      --accent:#3aa4ff; /* light blue accent */
+      --maxw: 720px;
+      --pad: 24px;
+      --radius: 14px;
+      --shadow: 0 6px 20px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:#fff;
+    }
+    a{color:var(--text); text-decoration: none;}
+    a:hover{ text-decoration: underline; }
+
+    /* Header */
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      max-width:var(--maxw); margin:0 auto; padding:14px var(--pad);
+    }
+    .brand{
+      font-weight:700; letter-spacing:.2px; font-size:18px;
+    }
+    .nav a.linkout{
+      font-weight:600; font-size:14px;
+    }
+
+    /* Main */
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding: 40px var(--pad) 72px; text-align:center; }
+    .hero{
+      display:block; margin: 24px auto 24px;
+      width: 260px; max-width: 90%;
+      border-radius: 18px; box-shadow: var(--shadow);
+    }
+    h1{
+      margin: 12px 0 4px;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height:1.15;
+      letter-spacing:.2px;
+    }
+    .sub{
+      color:var(--muted);
+      font-size: clamp(15px, 2.6vw, 18px);
+      margin: 4px 0 24px;
+    }
+
+    /* Form embed card */
+    .card{
+      background:#fff; border:1px solid #eee; border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 0; overflow:hidden;
+      margin: 0 auto 20px; text-align:left;
+    }
+    .card-header{
+      padding: 16px 18px; border-bottom:1px solid #f1f1f1;
+      font-weight:600; color:#111;
+    }
+    .form-embed{ width:100%; }
+    .form-embed iframe{
+      width:100% !important; 
+      height:640px; 
+      border:0; display:block;
+    }
+
+    /* Contact block */
+    .contact{
+      margin-top: 22px; color:#111;
+    }
+    .contact .label{ font-weight:700; margin-right:6px; }
+    .email{
+      color:var(--accent); font-weight:600;
+    }
+
+    /* Footer note */
+    footer{ text-align:center; color:var(--muted); font-size:13px; padding: 26px var(--pad) 40px; }
+
+    /* Small screens */
+    @media (max-width: 480px){
+      .hero{ width: 180px; }
+      .form-embed iframe{ height: 680px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="nav">
+    <div class="brand">Resolute Methane</div>
+    <!-- If you have a company page, replace href below -->
+    <a class="linkout" href="https://www.linkedin.com/in/wjsawyer" target="_blank" rel="noopener">LinkedIn</a>
+  </header>
+
+  <main class="wrap">
+    <!-- Optional hero image (swap the src or remove this <img> if you prefer a text-only page) -->
+    <img
+      class="hero"
+      src="https://images.squarespace-cdn.com/content/v1/66e0d6316c44b261102b18f4/3e65f917-6e7d-4faf-965e-ae60fa62ff1b/ResoluteMethane_placeholder.png"
+      alt="Resolute Methane placeholder"
+      loading="lazy"
+    />
+
+    <h1>We’re Building.</h1>
+    <p class="sub">We’ll be with you shortly.</p>
+
+    <!-- Google Form embed (kept responsive) -->
+    <section class="card" aria-label="Email signup">
+      <div class="card-header">Get updates</div>
+      <div class="form-embed">
+        <!-- Your provided embed code (width/height overridden by CSS for responsiveness) -->
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSclzTILe8kRpzHs5GEWsdxA_QYhZb1yKxI7IoRRgaY2ms-UOg/viewform?embedded=true"
+          width="640" height="395" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
+    </section>
+
+    <div class="contact">
+      <span class="label">Contact:</span>
+      <a class="email" href="mailto:hello@resolutemethane.com">hello@resolutemethane.com</a>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Resolute Methane
+  </footer>
+
+  <script>
+    // set current year in footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
