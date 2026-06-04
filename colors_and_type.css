@@ -1,0 +1,224 @@
+/* =====================================================================
+   RESOLUTE METHANE — Design System Foundations
+   Colors + Typography tokens (base + semantic)
+   Voice: professional, pragmatic, rugged. Oil & gas + mining.
+   ---------------------------------------------------------------------
+   Display face: WARDRUM (brand font, self-hosted from fonts/).
+   Body + mono: Barlow / IBM Plex Mono from Google Fonts CDN.
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ---- Wardrum: brand display family (self-hosted) ---- */
+@font-face {
+  font-family: 'Wardrum';
+  src: url('fonts/Wardrum-Regular.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Wardrum';
+  src: url('fonts/Wardrum-Bold.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+/* Outline cut — special display use only (oversized hero numerals, etc.) */
+@font-face {
+  font-family: 'Wardrum Outline';
+  src: url('fonts/Wardrum-Outline.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Wardrum Outline';
+  src: url('fonts/Wardrum-BoldOutline.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+:root {
+  /* ---------------------------------------------------------------
+     NEUTRALS — warm iron / graphite. Forged-metal, heavy industrial.
+     Carries ~85% of every surface. (Was a cool blue slate.)
+     --------------------------------------------------------------- */
+  --ink-950: #131311;   /* deepest surface */
+  --ink-900: #1B1A17;   /* dark surface */
+  --ink-800: #25241F;   /* dark panel */
+  --ink-700: #34322C;   /* dark border / raised panel */
+  --ink-600: #4A483F;   /* hairlines on dark */
+  --ink-500: #6C6A5F;   /* muted text / icons */
+  --ink-400: #948F82;   /* secondary text */
+  --ink-300: #BAB6AB;   /* disabled / placeholder */
+  --ink-200: #D7D3CA;   /* borders on light */
+  --ink-100: #EBE8E1;   /* dividers / track */
+  --ink-50:  #F5F3EE;   /* canvas (light) */
+  --white:   #FFFFFF;
+  /* clarity aliases */
+  --iron-900: var(--ink-900); --iron-700: var(--ink-700); --iron-500: var(--ink-500);
+  --iron-300: var(--ink-300); --iron-100: var(--ink-100); --iron-50: var(--ink-50);
+
+  /* ---------------------------------------------------------------
+     CARBON — structural / climate brand color. Deep pine-petrol.
+     Links, charts, supporting accents, the "methane destroyed →
+     carbon credit" story. (Replaces the old clinical steel-blue.)
+     --------------------------------------------------------------- */
+  --carbon-800: #0C2E29;
+  --carbon-700: #103A33;
+  --carbon-600: #154A40;
+  --carbon-500: #195A4D;   /* carbon primary */
+  --carbon-400: #2C7868;
+  --carbon-300: #5C9E90;
+  --carbon-100: #DBE7E2;
+  /* back-compat aliases (old --steel-*) */
+  --steel-800: var(--carbon-800); --steel-700: var(--carbon-700); --steel-600: var(--carbon-600);
+  --steel-500: var(--carbon-500); --steel-400: var(--carbon-400); --steel-300: var(--carbon-300); --steel-100: var(--carbon-100);
+
+  /* ---------------------------------------------------------------
+     EMBER — the signature accent: high-temperature thermal oxidation.
+     Primary action / highlight. Molten, forged — the heat at the core
+     of the RTO, NOT a hi-vis safety beacon. Used sparingly (~5%).
+     (Replaces the old safety-flare orange.)
+     --------------------------------------------------------------- */
+  --ember-700: #8F3410;
+  --ember-600: #B14514;
+  --ember-500: #D2541C;   /* ember primary (actions) */
+  --ember-400: #E5783C;
+  --ember-100: #F7E0D2;
+  /* back-compat aliases (old --flare-*) */
+  --flare-700: var(--ember-700); --flare-600: var(--ember-600); --flare-500: var(--ember-500);
+  --flare-400: var(--ember-400); --flare-100: var(--ember-100);
+
+  /* ---------------------------------------------------------------
+     BRASS — warm metallic highlight for efficiency figures (rare).
+     --------------------------------------------------------------- */
+  --brass-500: #C98A1B;
+  --brass-100: #F4E7C4;
+  --amber-500: var(--brass-500); --amber-100: var(--brass-100);  /* alias */
+
+  /* ---------------------------------------------------------------
+     OPERATIONAL STATE — UNIT telemetry, not site-safety. An RTO
+     destroying methane reports operating / standby / fault / offline.
+     Toned to read "equipment status", never "hazard / leak".
+     --------------------------------------------------------------- */
+  --state-operating:    #1C6152;   /* running & destroying */
+  --state-operating-bg: #DEEAE5;
+  --state-standby:      #C98A1B;   /* idle / standby */
+  --state-standby-bg:   #F4E7C4;
+  --state-fault:        #A33B28;   /* unit fault (muted brick) */
+  --state-fault-bg:     #F2DED7;
+  --state-offline:      #6C6A5F;   /* no telemetry */
+  --state-carbon:       #195A4D;
+  --state-carbon-bg:    #DBE7E2;
+  /* back-compat aliases (old --status-*) */
+  --status-safe: var(--state-operating); --status-safe-bg: var(--state-operating-bg);
+  --status-warn: var(--state-standby);   --status-warn-bg: var(--state-standby-bg);
+  --status-alarm: var(--state-fault);    --status-alarm-bg: var(--state-fault-bg);
+  --status-info: var(--state-carbon);    --status-info-bg: var(--state-carbon-bg);
+  --status-offline: var(--state-offline);
+
+  /* ---------------------------------------------------------------
+     SEMANTIC ROLE TOKENS (light theme)
+     --------------------------------------------------------------- */
+  --bg:          var(--ink-50);
+  --surface:     var(--white);
+  --surface-2:   var(--ink-50);
+  --border:      var(--ink-200);
+  --border-soft: var(--ink-100);
+  --fg1:         var(--ink-900);   /* primary text */
+  --fg2:         var(--ink-500);   /* secondary text */
+  --fg3:         var(--ink-400);   /* tertiary / captions */
+  --brand:       var(--carbon-500);
+  --accent:      var(--ember-500);
+  --link:        var(--carbon-500);
+
+  /* ---------------------------------------------------------------
+     TYPE FAMILIES
+     --------------------------------------------------------------- */
+  --font-display: 'Wardrum', 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  --font-heading: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  --font-body:    'Barlow', system-ui, -apple-system, sans-serif;
+  --font-mono:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --font-display-outline: 'Wardrum Outline', 'Wardrum', sans-serif;
+
+  /* ---------------------------------------------------------------
+     TYPE SCALE — display/h1/h2 use WARDRUM (caps titling); h3 uses
+     Barlow Semi Condensed (mixed-case sub-heading); h4/body use Barlow.
+     --------------------------------------------------------------- */
+  --text-display: 700 60px/1.05 var(--font-display);
+  --text-h1:      700 42px/1.08 var(--font-display);
+  --text-h2:      700 31px/1.12 var(--font-display);
+  --text-h3:      600 24px/1.2  var(--font-heading);
+  --text-h4:      600 19px/1.3  var(--font-body);
+  --text-lead:    400 20px/1.5  var(--font-body);
+  --text-body:    400 16px/1.55 var(--font-body);
+  --text-small:   400 14px/1.5  var(--font-body);
+  --text-caption: 500 12px/1.4  var(--font-body);
+  --text-mono:    500 14px/1.45 var(--font-mono);
+
+  /* Overline / eyebrow — uppercase technical label */
+  --text-overline: 600 12px/1.2 var(--font-body);
+  --overline-tracking: 0.14em;
+  /* Wardrum is a wide all-caps face — titling wants slight positive tracking */
+  --display-tracking: 0.01em;
+
+  /* ---------------------------------------------------------------
+     SPACING — 4px base grid
+     --------------------------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* ---------------------------------------------------------------
+     RADII — restrained. Industrial = crisp, low rounding.
+     --------------------------------------------------------------- */
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-pill: 999px;
+
+  /* ---------------------------------------------------------------
+     BORDERS
+     --------------------------------------------------------------- */
+  --border-width: 1px;
+  --border-strong: 2px;
+
+  /* ---------------------------------------------------------------
+     SHADOWS — tight, low-spread. Industrial UI sits flat.
+     --------------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(14, 20, 23, 0.08);
+  --shadow-md: 0 2px 6px rgba(14, 20, 23, 0.10), 0 1px 2px rgba(14, 20, 23, 0.06);
+  --shadow-lg: 0 8px 24px rgba(14, 20, 23, 0.14), 0 2px 6px rgba(14, 20, 23, 0.08);
+  --shadow-focus: 0 0 0 3px rgba(25, 90, 77, 0.35);
+
+  /* ---------------------------------------------------------------
+     MOTION — purposeful, quick, no bounce.
+     --------------------------------------------------------------- */
+  --ease-standard: cubic-bezier(0.2, 0, 0.1, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --dur-slow: 280ms;
+}
+
+/* =====================================================================
+   SEMANTIC ELEMENT STYLES — opt-in via .rm-prose or use the vars.
+   ===================================================================== */
+.rm-display { font: var(--text-display); letter-spacing: var(--display-tracking); color: var(--fg1); }
+.rm-h1 { font: var(--text-h1); letter-spacing: var(--display-tracking); color: var(--fg1); }
+.rm-h2 { font: var(--text-h2); color: var(--fg1); }
+.rm-h3 { font: var(--text-h3); color: var(--fg1); }
+.rm-h4 { font: var(--text-h4); color: var(--fg1); }
+.rm-lead { font: var(--text-lead); color: var(--fg2); }
+.rm-body { font: var(--text-body); color: var(--fg1); }
+.rm-small { font: var(--text-small); color: var(--fg2); }
+.rm-caption { font: var(--text-caption); color: var(--fg3); }
+.rm-mono { font: var(--text-mono); color: var(--fg1); }
+.rm-overline {
+  font: var(--text-overline);
+  letter-spacing: var(--overline-tracking);
+  text-transform: uppercase;
+  color: var(--carbon-500);
+}

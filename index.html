@@ -1,180 +1,494 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Resolute Methane</title>
-  <meta name="description" content="Resolute Methane — We’re building. We’ll be with you shortly." />
-  <meta name="color-scheme" content="light dark" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif:ital,wght@0,400&family=Bitter:ital,wght@0,400;0,700;1,400;1,700">
+  <title>Resolute Methane — Next-Generation Industrial Methane Mitigation</title>
+  <meta name="description" content="Resolute Methane's compact Regenerative Thermal Oxidizer makes industrial methane mitigation practical and economical for coal mining, oil &amp; gas, and waste operations." />
+  <link rel="stylesheet" href="colors_and_type.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%23195A4D'/><text x='5' y='24' font-size='20' font-weight='700' font-family='sans-serif' fill='%23D2541C'>R</text></svg>" />
   <style>
-    :root{
-      --text:#0a0a0a;
-      --muted:#5b5b5b;
-      --accent:#3aa4ff; /* light blue accent */
-      --maxw: 1200px;
-      --pad: 24px;
-      --radius: 14px;
-      --shadow: 0 6px 20px rgba(0,0,0,.06);
-      --bg-yellow: rgb(237, 210, 134);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0; height:100%;}
-    body{
-      font:16px/1.6 "Bitter", "Times New Roman", Times, serif;
-      color:var(--text); background:var(--bg-yellow);
-      display:flex; flex-direction:column;
-    }
-    a{color:var(--text); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px var(--pad);
-      position:relative; z-index:10;
-    }
-    .brand{font-weight:700; letter-spacing:.2px; font-size:18px; font-family: "Young Serif", "Bitter", "Times New Roman", Times, serif;}
-    .nav a.linkout{font-weight:600; font-size:14px;}
-    
-    .main-container{
-      display:flex; flex:1; min-height:0; 
-      max-width: 1000px; margin: 0 auto; width: 100%;
-    }
-    
-    .image-section{
-      flex:1; position:relative; overflow:hidden; max-width: 500px;
-    }
-    
-    .hero{
-      width:100%; height:100%; object-fit:contain; object-position:left;
-    }
-    
-    .content-section{
-      flex:1; display:flex; flex-direction:column; justify-content:center;
-      padding:40px var(--pad) 40px 40px; max-width:500px; margin:0;
-      text-align:left;
-    }
-    h1{ margin:12px 0 4px; font-size: clamp(32px,5vw,48px); line-height:1.15; letter-spacing:.2px; font-weight:700; font-family: "Young Serif", "Bitter", "Times New Roman", Times, serif; }
-    .sub{ color:var(--muted); font-size:clamp(16px,2.6vw,20px); margin:4px 0 32px; }
+    /* ── Reset ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0 auto; font-family: var(--font-body); -webkit-font-smoothing: antialiased; color: var(--ink-900); background: #fff; max-width: 1440px; }
+    img { display: block; max-width: 100%; }
+    p { margin: 0; }
+    h1, h2 { margin: 0; }
 
-    .card{
-      background:#fff; border:1px solid #eee; border-radius:var(--radius);
-      box-shadow:var(--shadow); overflow:hidden; margin:0 0 20px 0; text-align:left;
+    /* ── Nav ────────────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--carbon-500);
+      height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 80px;
+      transition: box-shadow 0.2s var(--ease-standard);
     }
-    .card-header{
-      padding:16px 18px; border-bottom:1px solid #f1f1f1; font-weight:600; color:#111;
-    }
-    .card-body{ padding:18px; }
+    .site-nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+    .nav-wordmark { display: flex; flex-direction: column; line-height: 0.88; text-decoration: none; }
+    .nav-wordmark .wm-r { font-family: var(--font-display); font-weight: 700; font-size: 19px; letter-spacing: -0.005em; color: #fff; }
+    .nav-wordmark .wm-m { font-family: var(--font-display); font-weight: 700; font-size: 7px; letter-spacing: 0.28em; color: var(--ember-400); margin-top: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 40px; }
+    .nav-link { font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,0.62); transition: color 0.14s; }
+    .nav-link:hover { color: #fff; }
+    .nav-cta { background: var(--ember-500); color: #fff !important; padding: 10px 22px; border-radius: var(--radius-md); transition: background 0.14s !important; }
+    .nav-cta:hover { background: var(--ember-600) !important; }
 
-    /* Minimal inline form */
-    .inline-form{ display:flex; gap:10px; align-items:center; }
-    .inline-form label{ position:absolute; left:-9999px; }
-    .inline-form input[type="email"]{
-      flex:1 1 auto; padding:12px 14px; border:1px solid #ddd; border-radius:10px; font-size:16px; font-family:inherit;
-    }
-    .inline-form button{
-      flex:0 0 auto; padding:12px 16px; border:0; border-radius:10px; font-weight:600; font-size:16px; font-family:inherit;
-      background:#333; color:#fff; cursor:pointer;
-    }
-    .inline-form button:disabled{ opacity:.6; cursor:not-allowed; }
-    .help{ color:var(--muted); font-size:13px; margin-top:8px; }
+    /* ── Scroll offset for sticky nav ───────────────────────────── */
+    section[id] { scroll-margin-top: 72px; }
 
-    .success{
-      display:none; padding:12px 14px; background:#f6ffed; border:1px solid #c6f6c5; color:#0a5b10;
-      border-radius:10px; margin-top:12px; font-size:15px;
+    /* ── Buttons ────────────────────────────────────────────────── */
+    .btn { display: inline-block; background: var(--ember-500); color: #fff; padding: 15px 34px; border-radius: var(--radius-md); font-family: var(--font-body); font-weight: 700; font-size: 13.5px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.14s; }
+    .btn:hover { background: var(--ember-600); }
+    .btn-ghost { display: inline-block; background: transparent; color: var(--ink-600); padding: 14px 24px; border: 1.5px solid var(--ink-300); border-radius: var(--radius-md); font-family: var(--font-body); font-weight: 600; font-size: 13.5px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: border-color 0.14s, color 0.14s; }
+    .btn-ghost:hover { border-color: var(--ink-500); color: var(--ink-900); }
+
+    /* ── Shared section type ────────────────────────────────────── */
+    .section { padding: 88px 80px; }
+    .eyebrow { font-family: var(--font-body); font-weight: 600; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--carbon-500); margin-bottom: 14px; }
+    .h2 { font-family: var(--font-display); font-weight: 700; font-size: 48px; line-height: 1.0; letter-spacing: 0.005em; color: var(--ink-900); }
+    .body-text { font-size: 17px; line-height: 1.65; color: var(--ink-600); margin-top: 20px; max-width: 62ch; text-wrap: pretty; }
+
+    /* ── Hero ───────────────────────────────────────────────────── */
+    .hero { display: flex; min-height: 580px; }
+    .hero-left { flex: 0 0 45%; min-width: 0; overflow: hidden; background: var(--carbon-600); padding: 88px 72px; display: flex; flex-direction: column; justify-content: center; }
+    .hero-right { flex: 1; min-width: 0; background: #fff; padding: 80px 80px 80px 64px; display: flex; flex-direction: column; justify-content: center; }
+    .hero-rule { width: 40px; height: 2px; background: var(--ember-500); margin-bottom: 32px; }
+    .hero-tagline { font-family: var(--font-display); font-weight: 700; font-size: 67px; line-height: 0.91; letter-spacing: 0.01em; text-transform: uppercase; color: #fff; }
+    .hero-tagline .em { color: var(--ember-400); }
+    .hero-stamp { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: rgba(255,255,255,0.38); margin-top: 32px; text-transform: uppercase; }
+    .hero-eyebrow { font-family: var(--font-body); font-weight: 600; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--carbon-500); margin-bottom: 14px; }
+    .hero-h2 { font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 1.05; letter-spacing: 0.005em; color: var(--ink-900); }
+    .hero-body { font-size: 17px; line-height: 1.65; color: var(--ink-600); margin-top: 18px; max-width: 48ch; text-wrap: pretty; }
+    .hero-btns { display: flex; gap: 14px; margin-top: 28px; align-items: center; flex-wrap: wrap; }
+
+    /* ── Metrics strip ──────────────────────────────────────────── */
+    .metrics-strip { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .metric { padding: 40px 60px; border-top: 2px solid var(--ember-500); border-right: 1px solid var(--ink-200); }
+    .metric:last-child { border-right: none; }
+    .metric-stat { font-family: var(--font-mono); font-weight: 700; font-size: 39px; line-height: 1; letter-spacing: -0.02em; color: var(--carbon-600); }
+    .metric-label { font-family: var(--font-body); font-weight: 600; font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-500); margin-top: 10px; }
+    .metric-body { font-size: 14px; line-height: 1.55; color: var(--ink-600); margin-top: 8px; max-width: 28ch; }
+
+    /* ── Challenge ──────────────────────────────────────────────── */
+    .section-challenge { background: var(--ink-50); }
+    .section-challenge .body-text { max-width: none; }
+    .challenge-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 48px; }
+    .cstat-rule { width: 40px; height: 2px; background: var(--ember-500); margin-bottom: 18px; }
+    .cstat-label { font-family: var(--font-heading); font-weight: 700; font-size: 22px; color: var(--ink-900); }
+    .cstat-body { font-size: 15px; line-height: 1.55; color: var(--ink-600); margin-top: 8px; }
+
+    /* ── Technology / compare table ─────────────────────────────── */
+    .section-tech { background: #fff; }
+    .section-tech .body-text { max-width: none; }
+    .compare { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--ink-200); margin-top: 36px; }
+    .compare-head { display: grid; grid-template-columns: 1fr 1fr; }
+    .compare-head > div { padding: 15px 28px; font-family: var(--font-display); font-weight: 700; font-size: 13.5px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .compare-head .ex { background: var(--ink-100); color: var(--ink-500); }
+    .compare-head .re { background: var(--carbon-500); color: #fff; }
+    .compare-row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink-200); }
+    .compare-row > div { padding: 20px 28px; font-size: 15px; line-height: 1.5; }
+    .compare-row .ex { color: var(--ink-500); border-right: 1px solid var(--ink-200); }
+    .compare-row .re { background: var(--carbon-100); color: var(--ink-800); }
+
+    /* ── Applications ───────────────────────────────────────────── */
+    .section-apps { background: var(--carbon-500); }
+    .section-apps .body-text { max-width: none; }
+    .section-apps .eyebrow { color: var(--carbon-300); }
+    .section-apps .h2 { color: #fff; }
+    .section-apps .body-text { color: rgba(255,255,255,0.68); }
+    .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 44px; }
+    .app-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16); border-radius: var(--radius-lg); padding: 28px; }
+    .app-photo { aspect-ratio: 1 / 1; max-width: 280px; border-radius: var(--radius-md); overflow: hidden; background: rgba(255,255,255,0.06); }
+    .app-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .app-title { font-family: var(--font-heading); font-weight: 700; font-size: 22px; line-height: 1.15; color: #fff; margin-top: 20px; }
+    .app-body { font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.65); margin-top: 10px; }
+
+    /* ── Partners ─────────────────────────────────────────────── */
+    .section-partners { background: var(--ink-50); padding: 64px 80px; }
+    .section-partners .eyebrow { color: var(--ink-400); margin-bottom: 40px; }
+    .partners-row { display: flex; align-items: center; justify-content: center; gap: 80px; flex-wrap: wrap; }
+    .partner-logo { height: 56px; width: auto; object-fit: contain; opacity: 0.85; transition: opacity 0.15s; }
+    .partner-logo:hover { opacity: 1; }
+
+    /* ── About ──────────────────────────────────────────────────── */
+    .section-about { background: #fff; }
+    .section-about .body-text { max-width: none; }
+
+    /* ── Leadership ─────────────────────────────────────────────── */
+    .section-team { background: var(--ink-50); }
+    .leadership-card { display: flex; gap: 0; align-items: flex-start; margin-top: 44px; }
+    .leadership-photo-col { flex: 0 0 50%; display: flex; justify-content: flex-end; padding-right: 80px; }
+    .leadership-bio { flex: 1; }
+    .leadership-photo { width: 280px; flex-shrink: 0; border-radius: var(--radius-md); overflow: hidden; background: var(--ink-950); }
+    .leadership-photo img { width: 100%; height: auto; display: block; }
+    .leadership-name { font-family: var(--font-heading); font-weight: 700; font-size: 26px; color: var(--ink-900); }
+    .leadership-role { font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--carbon-500); margin-top: 6px; margin-bottom: 24px; }
+    .leadership-text { font-size: 16px; line-height: 1.72; color: var(--ink-600); text-wrap: pretty; }
+
+    /* ── CTA / Contact ──────────────────────────────────────────── */
+    .section-cta { background: var(--carbon-500); padding: 96px 80px 496px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .cta-h { font-family: var(--font-display); font-weight: 700; font-size: 68px; line-height: 1; letter-spacing: 0.005em; color: #fff; }
+    .cta-sub { font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.65); margin-top: 18px; max-width: 58ch; text-wrap: pretty; text-align: center; }
+    .cta-email { font-family: var(--font-mono); font-weight: 600; font-size: 19px; color: var(--ember-400); display: inline-block; margin-top: 32px; text-decoration: none; transition: color 0.14s; }
+    .cta-email:hover { color: #e99265; text-decoration: underline; }
+    .section-cta .btn { display: inline-block; margin-top: 24px; }
+
+    /* ── Footer ─────────────────────────────────────────────────── */
+    .site-footer { background: var(--ink-950); padding: 40px 80px; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+    .footer-wordmark { display: flex; flex-direction: column; line-height: 0.88; text-decoration: none; }
+    .footer-wordmark .wm-r { font-family: var(--font-display); font-weight: 700; font-size: 19px; letter-spacing: -0.005em; color: #fff; }
+    .footer-wordmark .wm-m { font-family: var(--font-display); font-weight: 700; font-size: 7px; letter-spacing: 0.28em; color: var(--ember-400); margin-top: 2px; }
+    .footer-links { display: flex; gap: 32px; }
+    .footer-link { font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: var(--ink-400); transition: color 0.14s; }
+    .footer-link:hover { color: var(--ink-200); }
+    .footer-copy { font-family: var(--font-mono); font-size: 12px; color: var(--ink-600); white-space: nowrap; }
+
+    /* ── Hamburger + mobile nav ─────────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px; flex-shrink: 0;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.9); border-radius: 2px; }
+    .nav-mobile {
+      display: none; flex-direction: column; position: sticky; top: 72px; z-index: 99;
+      background: var(--carbon-700, #103A33); box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile-link {
+      padding: 15px 24px; border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-family: var(--font-body); font-weight: 600; font-size: 13px;
+      letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+      color: rgba(255,255,255,0.72); transition: color 0.14s;
+    }
+    .nav-mobile-link:hover { color: #fff; }
+    .nav-mobile-link:last-child { border-bottom: none; }
+    .nav-mobile-cta { color: var(--ember-400); }
+
+    /* ── 1024–1439px: tighter desktop ──────────────────────────── */
+    @media (max-width: 1439px) {
+      .site-nav { padding: 0 60px; }
+      .section { padding: 80px 60px; }
+      .hero-left { padding: 80px 60px; }
+      .hero-right { padding: 72px 60px 72px 52px; }
+      .hero-tagline { font-size: 52px; }
+      .metric { padding: 32px 44px; }
+      .metric-stat { font-size: 33px; }
+      .leadership-photo-col { padding-right: 60px; }
+      .section-cta { padding: 80px 60px 496px; }
+      .site-footer { padding: 36px 60px; }
     }
 
-    .contact{ margin-top:22px; color:#111; text-align:left; }
-    .contact .label{ font-weight:700; margin-right:6px; }
-    .email{ color:var(--accent); font-weight:600; }
-
-    footer{ text-align:center; color:var(--muted); font-size:13px; padding:26px var(--pad) 40px; }
-
-    @media (max-width:768px){
-      .main-container{ flex-direction:column; }
-      .image-section{ height:300px; }
-      .hero{ object-fit:contain; }
-      .content-section{ padding:20px var(--pad); }
+    /* ── 768–1023px: tablet ─────────────────────────────────────── */
+    @media (max-width: 1023px) {
+      .site-nav { padding: 0 40px; }
+      .section { padding: 64px 40px; }
+      .hero-left { padding: 64px 40px; }
+      .hero-right { padding: 56px 40px 64px; }
+      .hero-tagline { font-size: 44px; }
+      .hero-h2 { font-size: 26px; }
+      .hero-body { font-size: 16px; }
+      .h2 { font-size: 38px; }
+      .metric { padding: 28px 30px; }
+      .metric-stat { font-size: 27px; }
+      .compare-head > div { padding: 13px 20px; font-size: 12px; }
+      .compare-row > div { padding: 16px 20px; font-size: 14px; }
+      .cta-h { font-size: 52px; }
+      .section-cta { padding: 64px 40px 320px; }
+      .site-footer { padding: 32px 40px; }
+      .leadership-card { gap: 0; }
+      .leadership-photo-col { flex: 0 0 50%; padding-right: 36px; }
+      .partner-logo { height: 48px; }
+      .partners-row { gap: 48px; }
     }
-    
-    @media (max-width:520px){
-      .inline-form{ flex-direction:column; align-items:stretch; }
-      .inline-form button{ width:100%; }
+
+    /* ── Max 767px: mobile ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      /* Nav */
+      .site-nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      /* Sections */
+      .section { padding: 52px 20px; }
+
+      /* Hero: stack vertically */
+      .hero { flex-direction: column; min-height: unset; }
+      .hero-left { flex: none !important; width: 100%; min-width: 0; padding: 52px 20px 44px; }
+      .hero-right { flex: none !important; width: 100%; min-width: 0; padding: 44px 20px 52px; }
+      .hero-tagline { font-size: 48px; }
+      .hero-h2 { font-size: 26px; }
+      .hero-body { font-size: 16px; max-width: none; }
+      .hero-btns { flex-wrap: wrap; }
+
+      /* Metrics: single column */
+      .metrics-strip { grid-template-columns: 1fr; }
+      .metric { border-right: none; border-bottom: 1px solid var(--ink-200); padding: 32px 20px; }
+      .metric:last-child { border-bottom: none; }
+      .metric-stat { font-size: 36px; }
+
+      /* Challenge stats: single column */
+      .challenge-stats { grid-template-columns: 1fr; }
+
+      /* H2 */
+      .h2 { font-size: 34px; }
+
+      /* compare table stays 2 columns at all sizes */
+      .compare-head > div { padding: 11px 14px; font-size: 11px; }
+      .compare-row > div { padding: 14px 14px; font-size: 13px; }
+
+      /* App cards: single column */
+      .apps-grid { grid-template-columns: 1fr; gap: 20px; }
+
+      /* Leadership: stack */
+      .leadership-card { flex-direction: column; }
+      .leadership-photo-col { flex: none; width: auto; padding-right: 0; justify-content: flex-start; }
+      .leadership-photo { width: 220px; }
+
+      /* Partners */
+      .partners-row { gap: 28px; }
+      .partner-logo { height: 40px; }
+      .section-partners { padding: 52px 20px; }
+
+      /* CTA */
+      .cta-h { font-size: 40px; }
+      .cta-sub { font-size: 16px; }
+      .section-cta { padding: 64px 20px 120px; }
+
+      /* Footer */
+      .site-footer { flex-direction: column; gap: 20px; align-items: flex-start; padding: 36px 20px; }
+      .footer-links { flex-wrap: wrap; gap: 14px; }
+    }
+
+    /* ── Max 374px: small phones ────────────────────────────────── */
+    @media (max-width: 374px) {
+      .section { padding: 44px 16px; }
+      .site-nav { padding: 0 16px; }
+      .hero-left { padding: 44px 16px 36px; }
+      .hero-right { padding: 36px 16px 44px; }
+      .hero-tagline { font-size: 38px; }
+      .h2 { font-size: 28px; }
+      .cta-h { font-size: 34px; }
+      .metric { padding: 28px 16px; }
+      .metric-stat { font-size: 30px; }
+      .section-cta { padding: 52px 16px 96px; }
+      .section-partners { padding: 44px 16px; }
     }
   </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="brand">Resolute Methane</div>
-    <a class="linkout" href="https://www.linkedin.com/in/wjsawyer" target="_blank" rel="noopener">in</a>
-  </header>
 
-  <div class="main-container">
-    <div class="image-section">
-      <img
-        class="hero"
-        src="./RM_index_image.png"
-        alt="Resolute Methane" loading="lazy" />
+  <!-- ── Nav ──────────────────────────────────────────────────────── -->
+  <nav class="site-nav" id="site-nav">
+    <a class="nav-wordmark" href="#">
+      <span class="wm-r">RESOLUTE</span>
+      <span class="wm-m">METHANE</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="#technology">Technology</a>
+      <a class="nav-link" href="#applications">Applications</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#partners">Partners</a>
+      <a class="nav-link nav-cta" href="#contact">Contact</a>
     </div>
-    
-    <div class="content-section">
-      <h1>We're Building.</h1>
-      <p class="sub">We'll be with you shortly.</p>
-
-      <section aria-label="Email signup">
-        <form
-          id="gsignup"
-          class="inline-form"
-          action="https://docs.google.com/forms/d/e/1FAIpQLSclzTILe8kRpzHs5GEWsdxA_QYhZb1yKxI7IoRRgaY2ms-UOg/formResponse"
-          method="POST"
-          target="hidden_iframe"
-          onsubmit="submitted=true"
-        >
-          <label for="email">Email address</label>
-          <input
-            id="email"
-            name="entry.573482162"
-            type="email"
-            placeholder="Email"
-            required
-            autocomplete="email"
-            inputmode="email"
-          />
-          <!-- Honeypot (spam trap) -->
-          <input type="text" name="hp_field" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px">
-          <button id="submitBtn" type="submit">Sign Up</button>
-        </form>
-
-        <div id="ok" class="success" role="status" aria-live="polite">You're in!</div>
-
-        <!-- Hidden iframe to keep submission on-page (no redirect) -->
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-      </section>
-
-      <div class="contact">
-        <span class="label">Contact:</span>
-        <a class="email" href="mailto:hello@resolutemethane.com">hello@resolutemethane.com</a>
-      </div>
-    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a class="nav-mobile-link" href="#technology" onclick="closeMobileNav()">Technology</a>
+    <a class="nav-mobile-link" href="#applications" onclick="closeMobileNav()">Applications</a>
+    <a class="nav-mobile-link" href="#about" onclick="closeMobileNav()">About</a>
+    <a class="nav-mobile-link" href="#partners" onclick="closeMobileNav()">Partners</a>
+    <a class="nav-mobile-link nav-mobile-cta" href="#contact" onclick="closeMobileNav()">Contact</a>
   </div>
 
-  <footer>© <span id="y"></span> Resolute Methane</footer>
+  <!-- ── Hero ─────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-rule"></div>
+      <h1 class="hero-tagline">
+        NEXT-<br />GENERATION<br /><span class="em">METHANE</span><br />MITIGATION
+      </h1>
+      <p class="hero-stamp">Resolute Methane · Est. 2024</p>
+    </div>
+    <div class="hero-right">
+      <p class="hero-eyebrow">Next-Generation RTO</p>
+      <h2 class="hero-h2">Proven Science,<br />Reinvented Economics</h2>
+      <p class="hero-body">Resolute Methane's compact Regenerative Thermal Oxidizer unlocks industrial methane destruction for applications too dilute or too expensive for legacy technology.</p>
+      <div class="hero-btns">
+        <a class="btn" href="#contact">Partner With Us</a>
+        <a class="btn-ghost" href="#technology">Learn More ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Metrics strip ────────────────────────────────────────────── -->
+  <section class="metrics-strip">
+    <div class="metric">
+      <div class="metric-stat">3–5×</div>
+      <div class="metric-label">Cost Reduction</div>
+      <p class="metric-body">Lifetime cost of mitigation vs. legacy technologies, across concentrations from 0.03% to 1%.</p>
+    </div>
+    <div class="metric">
+      <div class="metric-stat">0.03%</div>
+      <div class="metric-label">Min. Concentration</div>
+      <p class="metric-body">Self-sustaining operation at the most dilute methane streams found in real industrial settings.</p>
+    </div>
+    <div class="metric">
+      <div class="metric-stat">99.5%</div>
+      <div class="metric-label">Destruction Efficiency</div>
+      <p class="metric-body">Complete high-temperature oxidation. No catalysts. No fouling. Continuous, reliable performance.</p>
+    </div>
+  </section>
+
+  <!-- ── Challenge ────────────────────────────────────────────────── -->
+  <section id="challenge" class="section section-challenge">
+    <p class="eyebrow">The challenge</p>
+    <h2 class="h2">The Dilute Methane Problem</h2>
+    <p class="body-text">Methane emissions represent a massive climate liability for heavy industry. While abatement is necessary, traditional technologies fail commercially — too large, too expensive, too limited. The industry doesn't need more science projects; it needs rugged, scalable engineering that works economically in real-world environments.</p>
+    <div class="challenge-stats">
+      <div>
+        <div class="cstat-rule"></div>
+        <div class="cstat-label">1 Billion Tons</div>
+        <p class="cstat-body">CO₂e emitted annually from coal mine ventilation air methane alone — largely unmitigated.</p>
+      </div>
+      <div>
+        <div class="cstat-rule"></div>
+        <div class="cstat-label">No Viable Solutions</div>
+        <p class="cstat-body">Existing RTOs and catalytic approaches are uneconomical at the concentrations found in real industrial settings.</p>
+      </div>
+      <div>
+        <div class="cstat-rule"></div>
+        <div class="cstat-label">Rapid Impact</div>
+        <p class="cstat-body">Methane is the most powerful lever for reducing the effects of climate change in the next decade.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Technology ───────────────────────────────────────────────── -->
+  <section id="technology" class="section section-tech">
+    <p class="eyebrow">The engineering edge</p>
+    <h2 class="h2">Proven Science,<br />Better Architecture</h2>
+    <p class="body-text">Resolute redesigns the hardware architecture behind thermal methane destruction — preserving the reliability of proven high-temperature oxidation while dramatically improving efficiency and reducing cost and operational complexity.</p>
+    <div class="compare">
+      <div class="compare-head">
+        <div class="ex">Existing solutions</div>
+        <div class="re">The Resolute advantage</div>
+      </div>
+      <div class="compare-row">
+        <div class="ex">Traditional RTOs use massive ceramic media beds to retain heat, inflating capital costs, weight, and site footprint.</div>
+        <div class="re">Resolute eliminates ceramic media entirely. Our compact, proprietary heat recovery architecture is orders of magnitude cheaper to build.</div>
+      </div>
+      <div class="compare-row">
+        <div class="ex">Legacy systems suffer from high pressure drops, demanding large on-site parasitic energy to force air through the system.</div>
+        <div class="re">Resolute's flow-through design minimises resistance, dramatically reducing energy demands and simplifying installation.</div>
+      </div>
+      <div class="compare-row">
+        <div class="ex">Catalytic approaches depend on fragile catalysts that degrade and clog over time — causing downtime and replacement costs.</div>
+        <div class="re">Resolute achieves complete methane destruction through proven high-temperature oxidation. No catalysts. No fouling. Continuous reliability.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Applications ─────────────────────────────────────────────── -->
+  <section id="applications" class="section section-apps">
+    <p class="eyebrow">Industrial applications</p>
+    <h2 class="h2">Built for the<br />Hardest Sources</h2>
+    <p class="body-text">Originally developed for coal mines, our highly scalable architecture is applicable across any industry managing dilute methane streams.</p>
+    <div class="apps-grid">
+      <div class="app-card">
+        <div class="app-photo"><img src="onepagers/photos/coal-1.jpg" alt="Active coal mining operations" /></div>
+        <div class="app-title">Active &amp; Abandoned Mining</div>
+        <p class="app-body">Ventilation Air Methane (VAM), drainage systems, and legacy abandoned mine shafts — previously uneconomical to treat at scale.</p>
+      </div>
+      <div class="app-card">
+        <div class="app-photo"><img src="onepagers/photos/oilgas-1.jpg" alt="Oil and gas operations" /></div>
+        <div class="app-title">Oil &amp; Gas Operations</div>
+        <p class="app-body">The only viable, cost-effective aftertreatment for engine slip across natural gas compressors, generators, and related sources.</p>
+      </div>
+      <div class="app-card">
+        <div class="app-photo"><img src="uploads/industrial_1.jpg" alt="Chemical and industrial facility" /></div>
+        <div class="app-title">Regulated Industrial Pollutants</div>
+        <p class="app-body">Broadband destruction of dilute hydrocarbons, ammonia, NO<sub>x</sub>, and VOCs for chemical manufacturing, automotive painting, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ────────────────────────────────────────────────────── -->
+  <section id="about" class="section section-about">
+    <p class="eyebrow">Mission</p>
+    <h2 class="h2">Why Resolute</h2>
+    <p class="body-text">Founded to tackle the world's largest unaddressed methane problem. Resolute is commercialising next-generation regenerative thermal oxidation technology to make dilute methane mitigation practical and economical across the heaviest-emitting industries.</p>
+    <p class="body-text" style="margin-top: 16px;">The industry doesn't need more science projects. It needs rugged, scalable engineering that works economically — in harsh environments, at scale.</p>
+  </section>
+
+  <!-- ── Leadership ─────────────────────────────────────────────── -->
+  <section id="team" class="section section-team">
+    <p class="eyebrow">Leadership</p>
+    <div class="leadership-card">
+      <div class="leadership-photo-col">
+        <div class="leadership-photo">
+          <img src="uploads/img_0524_final_bw.png" alt="Will Sawyer, Founder &amp; CEO" />
+        </div>
+      </div>
+      <div class="leadership-bio">
+        <div class="leadership-name">Will Sawyer</div>
+        <div class="leadership-role">Founder &amp; CEO</div>
+        <p class="leadership-text">Will Sawyer founded Resolute Methane to make dilute methane destruction practical across industrial sites. He brings a background in mechanical engineering, environmental science, high-temperature oxidation, and climate impact assessment to the challenge of building rugged, cost-effective systems for methane streams that are too dilute, variable, or operationally challenging for legacy technologies. Before founding Resolute Methane, he was a postdoctoral associate with Desiree Plata at MIT, where he worked on methane mitigation and earned his PhD in Mechanical Engineering. He also holds degrees from Dartmouth College and Wesleyan University.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Partners ──────────────────────────────────────────────────── -->
+  <section id="partners" class="section section-partners">
+    <p class="eyebrow" style="text-align:center">Partners</p>
+    <div class="partners-row">
+      <img src="uploads/Mass-Clean-Energy-Center_Primary-Logo_Stacked_RGB-Dark-Teal.png" alt="Mass Clean Energy Center" class="partner-logo" />
+      <img src="uploads/Activate FullName Capri 2x.png" alt="Activate" class="partner-logo" />
+      <img src="uploads/Greentown-3-Color-Horizontal.webp" alt="Greentown Labs" class="partner-logo" />
+    </div>
+  </section>
+
+  <!-- ── Contact / CTA ─────────────────────────────────────────────── -->
+  <section id="contact" class="section-cta">
+    <h2 class="cta-h">Partner With Us</h2>
+    <p class="cta-sub">We are actively securing partners and site funding to support field demonstrations across multiple industrial use cases throughout 2026.</p>
+    <a class="btn" href="mailto:hello@resolutemethane.com">Get in Touch</a>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <a class="footer-wordmark" href="#">
+      <span class="wm-r">RESOLUTE</span>
+      <span class="wm-m">METHANE</span>
+    </a>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a class="footer-link" href="#technology">Technology</a>
+      <a class="footer-link" href="#applications">Applications</a>
+      <a class="footer-link" href="#about">About</a>
+      <a class="footer-link" href="#contact">Contact</a>
+    </nav>
+    <div class="footer-copy">© 2025 Resolute Methane</div>
+  </footer>
 
   <script>
-    // Footer year
-    document.getElementById('y').textContent = new Date().getFullYear();
+    // Sticky nav shadow on scroll
+    const nav = document.getElementById('site-nav');
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+      document.getElementById('nav-mobile').classList.remove('open');
+    }, { passive: true });
 
-    // After the hidden iframe loads (form submitted), show success message
-    let submitted = false;
-    document.getElementById('hidden_iframe').addEventListener('load', function () {
-      if (submitted) {
-        document.getElementById('ok').style.display = 'block';
-        document.getElementById('submitBtn').disabled = true;
-        const f = document.getElementById('gsignup');
-        if (f) { f.reset(); }
-      }
+    // Hamburger menu
+    document.getElementById('nav-hamburger').addEventListener('click', function () {
+      document.getElementById('nav-mobile').classList.toggle('open');
     });
+    function closeMobileNav() {
+      document.getElementById('nav-mobile').classList.remove('open');
+    }
   </script>
+
 </body>
 </html>
