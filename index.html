@@ -82,6 +82,11 @@
     /* ── Technology / compare table ─────────────────────────────── */
     .section-tech { background: #fff; }
     .section-tech .body-text { max-width: none; }
+    .tech-intro { display: grid; grid-template-columns: 1fr 340px; gap: 56px; align-items: start; margin-top: 20px; }
+    .tech-intro .body-text { max-width: none; margin-top: 0; }
+    .tech-intro .body-text + .body-text { margin-top: 16px; }
+    .tech-fig { display: flex; align-items: center; justify-content: center; }
+    .tech-fig svg { width: auto; height: auto; max-width: 100%; max-height: 520px; }
     .compare { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--ink-200); margin-top: 36px; }
     .compare-head { display: grid; grid-template-columns: 1fr 1fr; }
     .compare-head > div { padding: 15px 28px; font-family: var(--font-display); font-weight: 700; font-size: 13.5px; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -98,9 +103,9 @@
     .section-apps .eyebrow { color: var(--carbon-300); }
     .section-apps .h2 { color: #fff; }
     .section-apps .body-text { color: rgba(255,255,255,0.68); }
-    .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 44px; }
+    .apps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 44px; }
     .app-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16); border-radius: var(--radius-lg); padding: 28px; }
-    .app-photo { aspect-ratio: 1 / 1; max-width: 280px; border-radius: var(--radius-md); overflow: hidden; background: rgba(255,255,255,0.06); }
+    .app-photo { aspect-ratio: 1 / 1; max-width: 280px; margin: 0 auto; border-radius: var(--radius-md); overflow: hidden; background: rgba(255,255,255,0.06); }
     .app-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .app-title { font-family: var(--font-heading); font-weight: 700; font-size: 22px; line-height: 1.15; color: #fff; margin-top: 20px; }
     .app-body { font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.65); margin-top: 10px; }
@@ -201,6 +206,9 @@
       .leadership-photo-col { flex: 0 0 50%; padding-right: 36px; }
       .partner-logo { height: 48px; }
       .partners-row { gap: 48px; }
+      .apps-grid { grid-template-columns: repeat(2, 1fr); }
+      .tech-intro { grid-template-columns: 1fr; gap: 32px; }
+      .tech-fig { max-width: 420px; }
     }
 
     /* ── Max 767px: mobile ──────────────────────────────────────── */
@@ -329,15 +337,15 @@
     <div class="metric">
       <div class="metric-stat">3–5×</div>
       <div class="metric-label">Cost Reduction</div>
-      <p class="metric-body">Lifetime cost of mitigation vs. legacy technologies, across concentrations from 0.03% to 1%.</p>
+      <p class="metric-body">Projected lifetime cost vs. legacy RTOs — under $3/tCO₂e above 0.5% methane, and the first viable option below 0.2%.</p>
     </div>
     <div class="metric">
       <div class="metric-stat">0.03%</div>
       <div class="metric-label">Min. Concentration</div>
-      <p class="metric-body">Self-sustaining operation at the most dilute methane streams found in real industrial settings.</p>
+      <p class="metric-body">Self-sustaining operation at the most dilute methane streams (predicted at 50,000 scfm).</p>
     </div>
     <div class="metric">
-      <div class="metric-stat">99.5%</div>
+      <div class="metric-stat">&gt;99%</div>
       <div class="metric-label">Destruction Efficiency</div>
       <p class="metric-body">Complete high-temperature oxidation. No catalysts. No fouling. Continuous, reliable performance.</p>
     </div>
@@ -346,7 +354,7 @@
   <!-- ── Challenge ────────────────────────────────────────────────── -->
   <section id="challenge" class="section section-challenge">
     <p class="eyebrow">The challenge</p>
-    <h2 class="h2">The Dilute Methane Problem</h2>
+    <h2 class="h2">The Dilute Methane Challenge</h2>
     <p class="body-text">Methane emissions represent a massive climate liability for heavy industry. While abatement is necessary, traditional technologies fail commercially — too large, too expensive, too limited. The industry doesn't need more science projects; it needs rugged, scalable engineering that works economically in real-world environments.</p>
     <div class="challenge-stats">
       <div>
@@ -371,23 +379,85 @@
   <section id="technology" class="section section-tech">
     <p class="eyebrow">The engineering edge</p>
     <h2 class="h2">Proven Science,<br />Better Architecture</h2>
-    <p class="body-text">Resolute redesigns the hardware architecture behind thermal methane destruction — preserving the reliability of proven high-temperature oxidation while dramatically improving efficiency and reducing cost and operational complexity.</p>
+    <div class="tech-intro">
+      <div class="tech-copy">
+        <p class="body-text">Traditional RTOs destroy methane by heating the emission stream to 870–1000°C in a high-temperature combustion chamber. We leverage the same proven reaction, but wrap it in a clean-sheet hardware architecture: a counterflowing stream of ceramic particles integrated into the combustion chamber absorbs heat from the exhaust and uses it to preheat the incoming stream, replacing the large ceramic beds and cyclic flow-switching of traditional RTOs.</p>
+        <p class="body-text">By recovering over 99% of the thermal energy released during methane oxidation, the system operates without external fuel. The inherently higher heat transfer rate of particle-gas exchange, compared to ceramic beds, increases energy recovery while reducing system size and flow resistance.</p>
+      </div>
+      <div class="tech-fig">
+        <svg viewBox="82 52 434 628" role="img" aria-label="Reactor process diagram" style="width:100%;height:auto;max-height:480px">
+          <defs>
+            <pattern id="heaterHatch" width="15" height="15" patternUnits="userSpaceOnUse">
+              <path d="M0,15 L15,0" stroke="#D2541C" stroke-width="2.4"/>
+              <path d="M0,0 L15,15" stroke="#D2541C" stroke-width="2.4"/>
+            </pattern>
+          </defs>
+          <line x1="94" y1="652" x2="504" y2="652" stroke="#4A483F" stroke-width="3"/>
+          <g stroke="#4A483F" stroke-width="1.8">
+            <line x1="108" y1="652" x2="96" y2="668"/><line x1="134" y1="652" x2="122" y2="668"/><line x1="160" y1="652" x2="148" y2="668"/>
+            <line x1="186" y1="652" x2="174" y2="668"/><line x1="212" y1="652" x2="200" y2="668"/>
+            <line x1="238" y1="652" x2="226" y2="668"/><line x1="264" y1="652" x2="252" y2="668"/>
+            <line x1="290" y1="652" x2="278" y2="668"/><line x1="316" y1="652" x2="304" y2="668"/>
+            <line x1="342" y1="652" x2="330" y2="668"/><line x1="368" y1="652" x2="356" y2="668"/>
+            <line x1="394" y1="652" x2="382" y2="668"/><line x1="420" y1="652" x2="408" y2="668"/>
+            <line x1="446" y1="652" x2="434" y2="668"/><line x1="472" y1="652" x2="460" y2="668"/>
+            <line x1="498" y1="652" x2="486" y2="668"/>
+          </g>
+          <rect x="160" y="130" width="250" height="522" fill="#F1EEE8" stroke="#9A968B" stroke-width="4"/>
+          <g fill="#9A968B">
+            <rect x="166" y="136" width="14" height="21"/><rect x="390" y="136" width="14" height="21"/>
+            <rect x="166" y="625" width="14" height="21"/><rect x="390" y="625" width="14" height="21"/>
+          </g>
+          <rect x="162" y="358" width="246" height="34" fill="url(#heaterHatch)"/>
+          <g stroke="#195A4D" stroke-width="3" fill="none" stroke-dasharray="9 7" stroke-linecap="round">
+            <path d="M123 240 L123 600"/>
+            <path d="M123 240 L330 240"/>
+            <path d="M123 600 L330 600"/>
+            <path d="M245 240 L245 600"/>
+            <path d="M330 240 L330 600"/>
+          </g>
+          <g fill="#195A4D">
+            <polygon points="138,229 138,251 160,240"/>
+            <polygon points="182,589 182,611 160,600"/>
+            <polygon points="115,382 131,382 123,368"/>
+            <polygon points="237,498 253,498 245,512"/>
+            <polygon points="322,498 338,498 330,512"/>
+          </g>
+          <g stroke="#1B1A17" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M475 560 L210 560"/>
+            <path d="M210 560 L210 185"/>
+            <path d="M285 560 L285 185"/>
+            <path d="M360 560 L360 185"/>
+            <path d="M210 185 L410 185"/>
+            <path d="M410 185 L475 185 L475 70"/>
+          </g>
+          <g fill="#1B1A17">
+            <polygon points="433,549 433,571 411,560"/>
+            <polygon points="388,174 388,196 410,185"/>
+            <polygon points="464,86 486,86 475,64"/>
+            <polygon points="202,300 218,300 210,282"/>
+            <polygon points="277,300 293,300 285,282"/>
+            <polygon points="352,300 368,300 360,282"/>
+          </g>
+        </svg>
+      </div>
+    </div>
     <div class="compare">
       <div class="compare-head">
         <div class="ex">Existing solutions</div>
         <div class="re">The Resolute advantage</div>
       </div>
       <div class="compare-row">
-        <div class="ex">Traditional RTOs use massive ceramic media beds to retain heat, inflating capital costs, weight, and site footprint.</div>
-        <div class="re">Resolute eliminates ceramic media entirely. Our compact, proprietary heat recovery architecture is orders of magnitude cheaper to build.</div>
+        <div class="ex">Traditional RTOs rely on massive ceramic media beds to retain heat, drastically inflating capital costs, system weight, and footprint.</div>
+        <div class="re">No ceramic beds: our proprietary, particle-based system is compact, reduces materials and complexity, and enables unprecedented thermal efficiency.</div>
       </div>
       <div class="compare-row">
-        <div class="ex">Legacy systems suffer from high pressure drops, demanding large on-site parasitic energy to force air through the system.</div>
-        <div class="re">Resolute's flow-through design minimises resistance, dramatically reducing energy demands and simplifying installation.</div>
+        <div class="ex">Traditional RTOs suffer from high pressure drops, resulting in massive on-site electricity demand to force air through the system.</div>
+        <div class="re">By minimizing flow resistance, Resolute's flow-through design keeps back pressure low, often eliminating the need for blowers and simplifying installation.</div>
       </div>
       <div class="compare-row">
-        <div class="ex">Catalytic approaches depend on fragile catalysts that degrade and clog over time — causing downtime and replacement costs.</div>
-        <div class="re">Resolute achieves complete methane destruction through proven high-temperature oxidation. No catalysts. No fouling. Continuous reliability.</div>
+        <div class="ex">Nascent approaches to methane mitigation demand massive on-site electricity or depend on catalysts that degrade and clog over time, leading to incomplete removal, maintenance downtime, and replacement costs.</div>
+        <div class="re">Resolute uses proven high-temperature oxidation to reliably achieve &gt;99% methane destruction. No catalysts means no fouling, no degradation, no massive electricity demands, and continuous reliability.</div>
       </div>
     </div>
   </section>
@@ -410,8 +480,13 @@
       </div>
       <div class="app-card">
         <div class="app-photo"><img src="uploads/industrial_1.jpg" alt="Chemical and industrial facility" /></div>
-        <div class="app-title">Regulated Industrial Pollutants</div>
-        <p class="app-body">Broadband destruction of dilute hydrocarbons, ammonia, NO<sub>x</sub>, and VOCs for chemical manufacturing, automotive painting, and more.</p>
+        <div class="app-title">Industrial Pollutants</div>
+        <p class="app-body">Broadband destruction of dilute hydrocarbons, ammonia, NO<sub>x</sub>, and VOCs for manufacturing, painting, and more.</p>
+      </div>
+      <div class="app-card">
+        <div class="app-photo"><img src="onepagers/photos/agriculture-1.jpg" alt="Dairy farm with methane sources" /></div>
+        <div class="app-title">Waste &amp; Agriculture</div>
+        <p class="app-body">Methane and odor mitigation for landfill gas, manure management, and enclosed animal agriculture.</p>
       </div>
     </div>
   </section>
@@ -436,7 +511,7 @@
       <div class="leadership-bio">
         <div class="leadership-name">Will Sawyer</div>
         <div class="leadership-role">Founder &amp; CEO</div>
-        <p class="leadership-text">Will Sawyer founded Resolute Methane to make dilute methane destruction practical across industrial sites. He brings a background in mechanical engineering, environmental science, high-temperature oxidation, and climate impact assessment to the challenge of building rugged, cost-effective systems for methane streams that are too dilute, variable, or operationally challenging for legacy technologies. Before founding Resolute Methane, he was a postdoctoral associate with Desiree Plata at MIT, where he worked on methane mitigation and earned his PhD in Mechanical Engineering. He also holds degrees from Dartmouth College and Wesleyan University.</p>
+        <p class="leadership-text">Will Sawyer founded Resolute Methane to make dilute methane destruction practical across industrial sites. He brings a background in mechanical engineering, environmental science, high-temperature oxidation, and climate impact assessment to the challenge of mitigating methane streams that are too dilute, variable, or operationally challenging for legacy technologies. Before founding Resolute Methane, he worked on methane catalysis as a postdoctoral associate with Desiree Plata at MIT. He holds degrees from MIT, Dartmouth College, and Wesleyan University.</p>
       </div>
     </div>
   </section>
@@ -454,7 +529,7 @@
   <!-- ── Contact / CTA ─────────────────────────────────────────────── -->
   <section id="contact" class="section-cta">
     <h2 class="cta-h">Partner With Us</h2>
-    <p class="cta-sub">We are actively securing partners and site funding to support field demonstrations across multiple industrial use cases throughout 2026.</p>
+    <p class="cta-sub">We're seeking industry partners to host on-site demonstrations of our transportable system at their facilities throughout 2026 and 2027, validating the system in real-world operating conditions.</p>
     <a class="btn" href="mailto:hello@resolutemethane.com">Get in Touch</a>
   </section>
 
@@ -470,7 +545,7 @@
       <a class="footer-link" href="#about">About</a>
       <a class="footer-link" href="#contact">Contact</a>
     </nav>
-    <div class="footer-copy">© 2025 Resolute Methane</div>
+    <div class="footer-copy">© 2026 Resolute Methane</div>
   </footer>
 
   <script>
@@ -488,6 +563,19 @@
     function closeMobileNav() {
       document.getElementById('nav-mobile').classList.remove('open');
     }
+
+    // Match reactor diagram height to the text column (two-column layouts only)
+    function matchTechFig() {
+      var copy = document.querySelector('.tech-copy');
+      var svg = document.querySelector('.tech-fig svg');
+      if (!copy || !svg) return;
+      if (window.innerWidth <= 1023) { svg.style.height = ''; return; }
+      var h = copy.offsetHeight;
+      if (h > 120) svg.style.height = h + 'px';
+    }
+    window.addEventListener('resize', matchTechFig, { passive: true });
+    window.addEventListener('load', matchTechFig);
+    matchTechFig();
   </script>
 
 </body>
