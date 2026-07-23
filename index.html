@@ -86,7 +86,7 @@
     .tech-intro .body-text { max-width: none; margin-top: 0; }
     .tech-intro .body-text + .body-text { margin-top: 16px; }
     .tech-fig { display: flex; align-items: center; justify-content: center; }
-    .tech-fig svg { width: auto; height: auto; max-width: 100%; max-height: 520px; }
+    .tech-fig svg { width: auto; height: auto; max-width: 100%; min-height: 420px; max-height: 620px; }
     .compare { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--ink-200); margin-top: 36px; }
     .compare-head { display: grid; grid-template-columns: 1fr 1fr; }
     .compare-head > div { padding: 15px 28px; font-family: var(--font-display); font-weight: 700; font-size: 13.5px; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -122,7 +122,7 @@
     .section-about .body-text { max-width: none; }
 
     /* ── Leadership ─────────────────────────────────────────────── */
-    .section-team { background: var(--ink-50); }
+    .section-team { background: var(--ink-50); padding-bottom: 40px; }
     .leadership-card { display: flex; gap: 0; align-items: flex-start; margin-top: 44px; }
     .leadership-photo-col { flex: 0 0 50%; display: flex; justify-content: flex-end; padding-right: 80px; }
     .leadership-bio { flex: 1; }
@@ -207,8 +207,6 @@
       .partner-logo { height: 48px; }
       .partners-row { gap: 48px; }
       .apps-grid { grid-template-columns: repeat(2, 1fr); }
-      .tech-intro { grid-template-columns: 1fr; gap: 32px; }
-      .tech-fig { max-width: 420px; }
     }
 
     /* ── Max 767px: mobile ──────────────────────────────────────── */
@@ -248,6 +246,9 @@
 
       /* App cards: single column */
       .apps-grid { grid-template-columns: 1fr; gap: 20px; }
+      .tech-intro { grid-template-columns: 1fr; gap: 32px; }
+      .tech-fig { max-width: 420px; }
+      .tech-fig svg { min-height: 0; }
 
       /* Leadership: stack */
       .leadership-card { flex-direction: column; }
